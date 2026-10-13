@@ -1,0 +1,31 @@
+Data cleaning report
+====================
+
+Input file: online_advertising_performance_data(3).csv
+Original size: 15,408 rows x 14 columns
+Cleaned size: 15,403 rows x 12 columns
+
+Changes applied
+---------------
+1. Removed 2 completely empty columns: Unnamed: 12, Unnamed: 13.
+   These columns contained no values in any row and did not carry usable information.
+2. Removed 5 exact duplicate rows, keeping the first occurrence of each record.
+   Duplicate detection was performed across the substantive columns after removing the empty columns.
+3. No missing placement values were imputed. There are 413 missing values in placement; without a reliable source, assigning a placement would be guesswork.
+4. No suspicious numeric values were automatically changed. They are retained for review to avoid inventing corrections.
+
+Data quality findings retained for review
+-----------------------------------------
+- Missing values: placement has 413 missing values (2.68% of cleaned rows). All other retained columns have no missing values.
+- Exact duplicates removed: 5 duplicate rows removed; original row count was 15,408.
+- Date validation: month/day combinations are valid calendar dates (using a non-leap-year validation); no invalid dates found.
+- Negative values: none found in numeric measures.
+- Clicks exceed displays in 2 rows. This is logically suspicious and should be checked against the source.
+- Displays are zero while at least one of cost, clicks, revenue, conversions, or post-click sales amount is nonzero in 15 rows.
+- Post-click conversions exceed clicks in 328 rows. This can be possible depending on attribution/windowing and metric definitions, so it was flagged but not changed.
+- Cost is exactly zero despite positive displays in 57 rows. Could reflect rounding, free inventory, or data issues; retained pending business rules.
+- No string-format normalization was needed: the categorical values have no leading/trailing whitespace, and banner dimensions consistently use the same 'width x height' pattern.
+
+Recommendations
+---------------
+Confirm the missing placement values with the source system, and validate the rows where clicks exceed displays or displays are zero despite nonzero metrics. Confirm the intended definitions for post-click conversions and zero-cost impressions before enforcing further rules.

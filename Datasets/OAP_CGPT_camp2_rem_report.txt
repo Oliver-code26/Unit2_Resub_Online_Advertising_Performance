@@ -1,0 +1,34 @@
+Campaign 2 Removal Report
+=========================
+Input file: OAP_CGPT_data_cleaned.csv
+Output file: OAP_CGPT_data_without_campaign_2.csv
+
+Changes made
+------------
+- Input rows: 15,403
+- Rows removed: 1,614 (campaign_number explicitly labeled 'camp 2')
+- Output rows: 13,789
+- Columns before/after: 12 / 12 (unchanged)
+- No columns were removed or renamed.
+- No remaining values were edited, imputed, reformatted, or deduplicated.
+- CSV was saved without a pandas index column.
+
+Campaign counts after removal
+------------------------------
+- camp 1: 6,873
+- camp 3: 6,916
+
+Rows by month
+-------------
+Month | Before | Removed | After
+------|--------|---------|------
+April | 6,267 | 1,614 | 4,653
+May | 4,705 | 0 | 4,705
+June | 4,431 | 0 | 4,431
+
+Scope and safety notes
+----------------------
+- Only rows whose campaign_number value, after trimming surrounding whitespace and ignoring case, equals 'camp 2' were removed.
+- The input contained 1,614 camp 2 rows, all in April; no camp 2 rows were present in May or June.
+- The original uploaded file was not overwritten.
+- This is a row filter, not a correction of campaign metrics or other data-quality issues.
