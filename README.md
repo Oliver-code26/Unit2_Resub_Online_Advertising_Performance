@@ -11,6 +11,7 @@ I will also implement a Machine Learning algorithm to predict an outcome of enga
 * researching business presentation tools.  
 * Choosing a platform to present research.
 * researching what Machine Learning is and what it can do.
+* Possible considerations when exploring this data is GDPR guidlines.
 
 ## Technologies Used.
 * VSCode
